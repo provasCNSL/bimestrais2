@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bimestrais</title>
+    <style>
+        body {
+            background: rgb(42, 42, 42);
+            color: rgb(255, 255, 255);
+            font-family: Helvetica;
+            font-size: 20px;
+            padding: 20px;
+        }
+
+        .res {
+            /* text-align: center; */
+            text-align: left;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media(max-width: 600px) {
+            .res {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+        .botao {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            width: 320px;
+            height: 100px;
+            margin: 0 auto;
+            padding: 0;
+            line-height: 100px;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        /*  */
+    </style>
+</head>
+<div class="botao">
+    <button onclick="gerar()" class="botao">Gerar nova combinação</button>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="res">
+    <div id="res9A" class="content"></div>
+    <div id="res9B" class="content"></div>
+    <div id="res1A" class="content"></div>
+    <div id="res1B" class="content"></div>
+    <div id="res2A" class="content"></div>
+    <div id="res2B" class="content"></div>
+</div>
+<br>
+
+
+<body>
+    <script>
+        function gerar() {
+            var res9A = document.getElementById("res9A")
+            var res9B = document.getElementById("res9B")
+            var res1A = document.getElementById("res1A")
+            var res1B = document.getElementById("res1B")
+            var res2A = document.getElementById("res2A")
+            var res2B = document.getElementById("res2B")
+            res9A.innerHTML = "";
+            res9B.innerHTML = "";
+            res1A.innerHTML = "";
+            res1B.innerHTML = "";
+            res2A.innerHTML = "";
+            res2B.innerHTML = "";
+            var alunos9A
+            var alunos9B
+            var alunos1A
+            var alunos1B
+            var alunos2A
+            var alunos2B
+
+            function definindoAlunos() {
+                alunos9A = [
+                    "ALICE ARAÚJO GUIMARÃES 9ºA",
+                    "ANA CLARA SILVA DA CRUZ 9ºA",
+                    "ANA LAURA FERREIRA NAVES 9ºA",
+                    "ANA LUÍSA SANTOS SILVA 9ºA",
+                    "ANDRÉ DA COSTA CASTANHEIRA 9ºA",
+                    "ANGELINA VIEIRA MENDONÇA RIBEIRO 9ºA",
+                    "ANITA HELENA DE CARVALHO HENRIQUES 9ºA",
+                    "ARTHUR SILVA THULLER RIBEIRO 9ºA",
+                    "BRUNA GUALBERTO B. FERREIRA 9ºA",
+                    "CAIO GABRIEL VILAS BOAS 9ºA",
+                    "CAIO MESQUITA DE OLIVEIRA CARLOS 9ºA",
+                    "DEBORA FERNANDES DE CARVALHO 9ºA",
+                    "ENRIQUE RIBEIRO SANTOS 9ºA",
+                    "GABRIEL BARBOSA DE O. LIMA 9ºA",
+                    "GABRIELA MADEIRA DE CARVALHO PEREIRA 9ºA",
+                    "GUILHERME RODRIGUES COSTA BARBOSA 9ºA",
+                    "GUSTAVO JULIATE MARTINS 9ºA",
+                    "HELENA DE PAULA FRÁGUAS 9ºA",
+                    "HENRIQUE RIBEIRO CARVALHO 9ºA",
+                    "JOÃO VITOR SIQUEIRA BRAGA 9ºA",
+                    "LEONARDO FELIPE SILVA DE OLIVEIRA 9ºA",
+                    "LILIAN DE CÁSSIA DA SILVA GOMES 9ºA",
+                    "LUCAS DESLANDES MOSCARDINI 9ºA",
+                    "LUCIANO TEIXEIRA SILVA DIAS 9ºA",
+                    "MARCELA MESQUITA P. DE ABREU 9ºA",
+                    "MARIA EDUARDA BOTELHO OLIVEIRA 9ºA",
+                    "MARIA LUIZA PÁDUA VALÁCIO 9ºA",
+                    "MARIANA PIERANGELI VILELA COSTA 9ºA",
+                    "MARINA PEREIRA FARIA 9ºA",
+                    "OTÁVIO CREPALDI MOREIRA 9ºA",
+                    "OTÁVIO CUSTÓDIO RIVELLI MESQUITA 9ºA",
+                    "OTÁVIO HENRIQUE DO VALLE 9ºA",
+                    "PEDRO FRANÇA LOPES DO P. GOMES 9ºA",
+                    "PEDRO MARQUES FRAGUAS NOBRE 9ºA",
+                    "SOPHIA ABREU SAMPAIO CROUSE 9ºA",
+                    "VINÍCIUS RODRIGUES DO NASCIMENTO 9ºA",
+                ];
+
+                alunos9B = [
+                    "ÁGATHA JUVENCIO PEREIRA 9ºB",
+                    "ÁLVARO MADEIRA MARTINS 9ºB",
+                    "ANA LUIZA MARTINS 9ºB",
+                    "ANDRÉ LUIZ SALGADO CARVALHO 9ºB",
+                    "ANITA LOESCH NASCIMENTO 9ºB",
+                    "CAIO DE SOUZA ALVARENGA 9ºB",
+                    "CAMILA MAGALHÃES CASTRO RODRIGUES 9ºB",
+                    "DAVI TEIXEIRA ALVARENGA 9ºB",
+                    "EDUARDA ANDRADE MENDONÇA 9ºB",
+                    "EMILLY HIPOLITO DE JESUS 9ºB",
+                    "FERNANDO CARVALHO GIZZI 9ºB",
+                    "GABRIELLA GALDONE BERTOLI MARTINS 9ºB",
+                    "GUSTAVO GUEDES VITOR 9ºB",
+                    "IAN PINHEIRO CHAGAS AUGUSTO FERNANDES 9ºB",
+                    "IGOR VITORINO DE CASTRO MAURICIO 9ºB",
+                    "JOÃO VITOR AZEVEDO DE PAULA 9ºB",
+                    "JÚLIA LEITE MORAES 9ºB",
+                    "KELLY DIAS DINIZ ASSIS 9ºB",
+                    "LAÍS LINHARES SALGADO 9ºB",
+                    "LAUDOMILA MARIA ANDRADE CANAAN 9ºB",
+                    "LAURA TEIXEIRA LEOCÁDIO 9ºB",
+                    "LEONARDO MATHEUS RESENDE SILVA 9ºB",
+                    "LETÍCIA GAMA DA ROCHA MOREIRA 9ºB",
+                    "LETÍCIA MACHADO COUTO 9ºB",
+                    "LIRIS RAMOS OVIEDO WIERTEL 9ºB",
+                    "LIVIA DE ALMEIDA VIEIRA 9ºB",
+                    "LUÍS ANTÔNIO LIMA KEPPLER 9ºB",
+                    "MARCELA FERNANDA ALVES SILVA 9ºB",
+                    "MARCUS HENRIQUE RODRIGUES PEREIRA 9ºB",
+                    "MARIA CLARA DOS SANTOS SILVA 9ºB",
+                    "MARIA CLARA NUNES BORGES 9ºB",
+                    "MARIA FERNANDA DE SOUZA LIMA NAVES 9ºB",
+                    "MARIA LUÍSA SILVA ASSIS 9ºB",
+                    "MARIA PAULA SILVA ASSIS 9ºB",
+                    "MIGUEL ANDRADE FAGUNDES 9ºB",
+                    "STELA OLIVEIRA SOUZA 9ºB",
+                    "IVAN FLORES GAIO 9ºB",
+                    "SARA RAYNEE ANDRADE SOARES 9ºB",
+                    "ERIC MARTIMIANO LIMA 9ºB",
+                ];
+
+                alunos1A = [
+                    "ANA CLARA BERNARDO SILVA 1ºA",
+                    "ANA GABRIELA SILVA COSTA 1ºA",
+                    "ANA JÚLIA LELIS SILVA 1ºA",
+                    "ANA PAULA FURTADO CABRAL 1ºA",
+                    "ANNITA BERTILACCHI DE CARVALHO 1ºA",
+                    "ANTÔNIO MORETTI DE CARVALHO 1ºA",
+                    "AQUILES GONÇALVES GREGORIN 1ºA",
+                    "ARTHUR MENESES ANDRADE 1ºA",
+                    "BIANCA TONETTI BALIEIRO 1ºA",
+                    "BRENO HENRIQUE SALES 1ºA",
+                    "FÁDUA DE FATIMA TEIXEIRA LEOCADIO 1ºA",
+                    "FERNANDA ALVES SILVA 1ºA",
+                    "GABRIEL COSTA FONSECA 1ºA",
+                    "GEOVANA DE OLIVEIRA ZACARONI 1ºA",
+                    "GEOVANNA MADEIRA MARTINS 1ºA",
+                    "GUILHERME FREIRE NOGUEIRA 1ºA",
+                    "GUSTAVO SOUZA RICARDO 1ºA",
+                    "HELENA DE RESENDE CARVALHO 1ºA",
+                    "JOÃO EDUARDO V.TEIXEIRA 1ºA",
+                    "JOÃO VITTOR VILAS BOAS 1ºA",
+                    "JÚLIA FERNANDES M. DOS SANTOS 1ºA",
+                    "LAÍS CRISTINA DA SILVA 1ºA",
+                    "LEONARDO NESTOR DE CARVALHO 1ºA",
+                    "LUIZ PAULO SELVATI FONSECA FELIZALI 1ºA",
+                    "LUIZA SILVA MENEZES DOS PASSOS 1ºA",
+                    "MARIA EDUARDA BARTHOLO CARVALHO 1ºA",
+                    "MARIA EDUARDA VIGILATO DE OLIVEIRA 1ºA",
+                    "MATHEUS ARAÚJO FABRI 1ºA",
+                    "MATHEUS GUERRA PEDROSO 1ºA",
+                    "PEDRO CARVALHO CAMPOS 1ºA",
+                    "PEDRO DESLANDES MOSCARDINI 1ºA",
+                    "PEDRO UMEMURA AMARAL 1ºA",
+                    "RAUL CARVALHO SILVA 1ºA",
+                    "RODRIGO ALVES GOMES 1ºA",
+                ];
+
+                alunos1B = [
+                    "ALICE ARRIEL ROQUE 1ºB",
+                    "ANA LAURA FERREIRA PADOVANI 1ºB",
+                    "ANTÔNIO HENRIQUE A. FERREIRA 1ºB",
+                    "BERNARDO BARBOSA ANDRADE REZENDE 1ºB",
+                    "CLEO CARVALHO RIBEIRO 1ºB",
+                    "EMILLY SILVA FERREIRA 1ºB",
+                    "ERICK ZAKHIA ANDRADE 1ºB",
+                    "FELIPE SODRE PEREIRA DE OLIVEIRA 1ºB",
+                    "FELIPE SOUZA CARLOS 1ºB",
+                    "GABRIELA LIMA SILVA BORGES 1ºB",
+                    "GIOVANA PEREIRA BOTREL 1ºB",
+                    "GIOVANNA JÚLIA ALVES SILVA 1ºB",
+                    "IAGO MOREIRA GOMES CARVALHO 1ºB",
+                    "JAMYLE ALBINO DO CARMO 1ºB",
+                    "JÚLIA BOTELHO MESQUITA 1ºB",
+                    "LARA COSTA MESQUITA 1ºB",
+                    "LARA CRISTINA SILVA DE ABREU 1ºB",
+                    "LAURA CAMILLY MIRANDA MARTINS RESENDE 1ºB",
+                    "LORENA LAÍS ELIESE VENÂNCIO 1ºB",
+                    "LUIZ FELIPE PENICHE CAMPOS 1ºB",
+                    "MARIA EDUARDA BOTELHO SANTOS 1ºB",
+                    "MARIA EDUARDA OLIVEIRA SALLES 1ºB",
+                    "MARIA LUIZA CARVALHO SILVA 1ºB",
+                    "MATHEUS BOTELHO PEREIRA 1ºB",
+                    "MATHEUS ESTEVES NETTO 1ºB",
+                    "NATAN BARBOSA ANDRADE REZENDE 1ºB",
+                    "OTÁVIO BARROSO VILELA 1ºB",
+                    "PEDRO HENRIQUE DE SOUZA BENASSI 1ºB",
+                    "PEDRO OTÁVIO PEREIRA FAGUNDES 1ºB",
+                    "PIERRE PIVATO CAMPOS 1ºB",
+                    "RAFAELLA RESENDE SANTOS 1ºB",
+                    "SABRINA INES DOS SANTOS 1ºB",
+                ];
+                alunos2A = [
+                    "ALICE MENEZES ZAKHIA 2ºA",
+                    "ANA BEATRIZ PATTO NOGUEIRA 2ºA",
+                    "ANA CLARA MARQUES 2ºA",
+                    "ANA LUIZA GOMIDES OLIVEIRA 2ºA",
+                    "ANTONIO HENRIQUE N. BAIÃO 2ºA",
+                    "DANIEL COELHO BOTREL 2ºA",
+                    "DANIEL DE CASTRO TEIXEIRA MOURA 2ºA",
+                    "GABRIELLA OLIVEIRA ALVES 2ºA",
+                    "GUILHERME MENDES PEREIRA PATTO 2ºA",
+                    "JOÃO BATISTA CASTRO CANAAN 2ºA",
+                    "JOÃO PAULO WOUTERS 2ºA",
+                    "JOÃO PEDRO DA SILVA LEITE 2ºA",
+                    "JOAO PEDRO MENDES DE PAIVA 2ºA",
+                    "JOÃO VICTOR DE CASTRO RODRIGUES 2ºA",
+                    "LÍVIA MARIA DE SOUZA SILVA 2ºA",
+                    "LUCAS BORGES LOPES 2ºA",
+                    "LUCAS SEIJI TANAKA SARAIVA 2ºA",
+                    "LUIGI OLIVEIRA CANESTRI 2ºA",
+                    "LUÍS EDUARDO ANDRADE O. BERALDO 2ºA",
+                    "MARIA CLARA CASTRO MAIA 2ºA",
+                    "MATEUS FRANCO FAGUNDES 2ºA",
+                    "MATHEUS FELIPE VIEIRA 2ºA",
+                    "PEDRO ALENCAR ROCHA 2ºA",
+                    "PEDRO HENRIQUE DE SOUZA ABREU 2ºA",
+                    "RYAN CARLO GONÇALVES OLIVEIRA 2ºA",
+                    "VERONICA OLIVEIRA PAIXÃO  2ºA",
+                    "VITOR CARVALHO GOMES ANDRADE 2ºA",
+                    "SANDRA PEREIRA CESARINO 2ºA",
+                ];
+                alunos2B = [
+                    "BETINA LOESCH NASCIMENTO 2ºB",
+                    "CAROLINA MARQUES FRAGUAS NOBRE 2ºB",
+                    "DAVI NASCIMENTO DE PAULA 2ºB",
+                    "EDUARDA TAYSLA SELVATE 2ºB",
+                    "FELIPE FAZA 2ºB",
+                    "FELIPE NASCIMENTO FERREIRA 2ºB",
+                    "GUSTAVO ALESSANDRO DE SOUZA SABINO 2ºB",
+                    "GUSTAVO HENRIQUE CARVALHO GODDI 2ºB",
+                    "HENRIQUE CRESPO MORENO 2ºB",
+                    "IGNÁCIO DANIEL DE ASSIS E SILVA 2ºB",
+                    "ISABELLY CHRISTINE ESPEDITO 2ºB",
+                    "ISRAEL PULHEZ CARDOSO DE BARROS 2ºB",
+                    "JÚLIA DE OLIVEIRA HONORIO 2ºB",
+                    "LARA RESENDE SANTOS BOTELHO 2ºB",
+                    "LERRANYA VICTÓRIA CHAVES 2ºB",
+                    "LUCAS ALVES DOS SANTOS 2ºB",
+                    "LUCAS DE MESQUITA NIGRO 2ºB",
+                    "MARIA CLARA FURUKAVA PEREIRA 2ºB",
+                    "MARIA EDUARDA GUIMARÃES RESENDE 2ºB",
+                    "MARIA LUIZA PADOVANI RIBEIRO 2ºB",
+                    "MATEUS VITOR FERREIRA 2ºB",
+                    "MURILO CARVALHO CAMPOS 2ºB",
+                    "MURILO SOARES PENIDO SILVA 2ºB",
+                    "THIAGO ANTÔNIO DE SOUZA 2ºB",
+                    "VICTÓRIA MARIA SANTOS PÚPIO 2ºB",
+                    "VITORIO AUGUSTO MARANGONI PEREIRA 2ºB",
+                    "SOPHIA MARIA ROMANO SANTOS DE ANDRADE 2ºB",
+                ];
+                // console.log(alunos9A, alunos9B, alunos1A, alunos1B, alunos2A, alunos2B, alunos3A, alunos3B)
+
+            }
+            var sala9A = [];
+            var sala9B = [];
+            var sala1A = [];
+            var sala1B = [];
+            var sala2A = [];
+            var sala2B = [];
+
+            /*
+            9A: 5 5 6 4 4 4 4 4 36
+            9B: 5 6 6 5 4 4 4 5 39
+            1A: 5 5 4 4 4 4 4 4 34
+            1B: 5 5 4 5 3 3 3 4 32
+            2A: 4 4 3 4 3 3 3 4 28
+            2B: 4 4 4 3 3 3 3 3 27
+            3A: 4 5 3 3 3 3 3 3 27
+            3B: 4 5 4 4 4 3 3 5 32
+                36 39 34 32 28 27 27 
+            */
+
+
+            definindoAlunos();
+            function randomArrayShuffle(array) {
+                var currentIndex = array.length, temporaryValue, randomIndex;
+                while (0 !== currentIndex) {
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+                    temporaryValue = array[currentIndex];
+                    array[currentIndex] = array[randomIndex];
+                    array[randomIndex] = temporaryValue;
+                }
+                // console.log(array)
+            }
+
+            function randomizingTheOrderOfTheStudents() {
+                randomArrayShuffle(alunos9A)
+                randomArrayShuffle(alunos9B)
+                randomArrayShuffle(alunos1A)
+                randomArrayShuffle(alunos1B)
+                randomArrayShuffle(alunos2B)
+                randomArrayShuffle(alunos2A)
+                var qtd_1A_no_1B
+                //SALA 9A:
+                for (var i = 0; i < 7; i++) {
+                    sala9A.push(alunos9A[i])
+                }
+                alunos9A.splice(0, 7)
+                for (var i = 0; i < 7; i++) {
+                    sala9A.push(alunos9B[i])
+                }
+                alunos9B.splice(0, 7)
+                for (var i = 0; i < 6; i++) {
+                    sala9A.push(alunos1A[i])
+                }
+                alunos1A.splice(0, 6)
+                for (var i = 0; i < 6; i++) {
+                    sala9A.push(alunos1B[i])
+                }
+                alunos1B.splice(0, 6)
+                for (var i = 0; i < 5; i++) {
+                    sala9A.push(alunos2A[i])
+                }
+                alunos2A.splice(0, 5)
+                for (var i = 0; i < 5; i++) {
+                    sala9A.push(alunos2B[i])
+                }
+                alunos2B.splice(0, 5)
+
+                //SALA 9B:
+                for (var i = 0; i < 7; i++) {
+                    sala9B.push(alunos9A[i])
+                }
+                alunos9A.splice(0, 7)
+                for (var i = 0; i < 7; i++) {
+                    sala9B.push(alunos9B[i])
+                }
+                alunos9B.splice(0, 7)
+                for (var i = 0; i < 7; i++) {
+                    sala9B.push(alunos1A[i])
+                }
+                alunos1A.splice(0, 7)
+                for (var i = 0; i < 7; i++) {
+                    sala9B.push(alunos1B[i])
+                }
+                alunos1B.splice(0, 7)
+                for (var i = 0; i < 6; i++) {
+                    sala9B.push(alunos2A[i])
+                }
+                alunos2A.splice(0, 6)
+                for (var i = 0; i < 5; i++) {
+                    sala9B.push(alunos2B[i])
+                }
+                alunos2B.splice(0, 5)
+
+                //SALA 1A:
+                for (var i = 0; i < 6; i++) {
+                    sala1A.push(alunos9A[i])
+                }
+                alunos9A.splice(0, 6)
+                for (var i = 0; i < 7; i++) {
+                    sala1A.push(alunos9B[i])
+                }
+                alunos9B.splice(0, 7)
+                for (var i = 0; i < 6; i++) {
+                    sala1A.push(alunos1A[i])
+                }
+                alunos1A.splice(0, 6)
+                for (var i = 0; i < 5; i++) {
+                    sala1A.push(alunos1B[i])
+                }
+                alunos1B.splice(0, 5)
+                for (var i = 0; i < 5; i++) {
+                    sala1A.push(alunos2A[i])
+                }
+                alunos2A.splice(0, 5)
+                for (var i = 0; i < 5; i++) {
+                    sala1A.push(alunos2B[i])
+                }
+                alunos2B.splice(0, 5)
+
+                //SALA 1B:
+                for (var i = 0; i < 6; i++) {
+                    sala1B.push(alunos9A[i])
+                }
+                alunos9A.splice(0, 6)
+                for (var i = 0; i < 6; i++) {
+                    sala1B.push(alunos9B[i])
+                }
+                alunos9B.splice(0, 6)
+                for (var i = 0; i < 6; i++) {
+                    sala1B.push(alunos1A[i])
+                }
+                alunos1A.splice(0, 6)
+                for (var i = 0; i < 5; i++) {
+                    sala1B.push(alunos1B[i])
+                }
+                alunos1B.splice(0, 5)
+                for (var i = 0; i < 5; i++) {
+                    sala1B.push(alunos2A[i])
+                }
+                alunos2A.splice(0, 5)
+                for (var i = 0; i < 4; i++) {
+                    sala1B.push(alunos2B[i])
+                }
+                alunos2B.splice(0, 4)
+
+                //SALA 2A:
+                for (var i = 0; i < 5; i++) {
+                    sala2A.push(alunos9A[i])
+                }
+                alunos9A.splice(0, 5)
+
+                for (var i = 0; i < 6; i++) {
+                    sala2A.push(alunos9B[i])
+                }
+                alunos9B.splice(0, 6)
+
+                for (var i = 0; i < 5; i++) {
+                    sala2A.push(alunos1A[i])
+                }
+                alunos1A.splice(0, 5)
+
+                for (var i = 0; i < 5; i++) {
+                    sala2A.push(alunos1B[i])
+                }
+                alunos1B.splice(0, 5)
+
+                for (var i = 0; i < 3; i++) {
+                    sala2A.push(alunos2A[i])
+                }
+                alunos2A.splice(0, 3)
+
+                for (var i = 0; i < 4; i++) {
+                    sala2A.push(alunos2B[i])
+                }
+                alunos2B.splice(0, 4)
+
+                //SALA 2B:
+                console.log(alunos9A)
+                console.log(alunos9B)
+                console.log(alunos1A)
+                console.log(alunos1B)
+                console.log(alunos2A)
+                console.log(alunos2B)
+                for (var i = 0; i < 5; i++) {
+                    sala2B.push(alunos9A[i])
+                }
+                for (var i = 0; i < 6; i++) {
+                    sala2B.push(alunos9B[i])
+                }
+                for (var i = 0; i < 4; i++) {
+                    sala2B.push(alunos1A[i])
+                }
+                for (var i = 0; i < 4; i++) {
+                    sala2B.push(alunos1B[i])
+                }
+                for (var i = 0; i < 4; i++) {
+                    sala2B.push(alunos2A[i])
+                }
+                for (var i = 0; i < 4; i++) {
+                    sala2B.push(alunos2B[i])
+                }
+            }
+            randomizingTheOrderOfTheStudents();
+            for (var i = 0; i < sala9A.length; i++) {
+                if (i == 0) {
+                    res9A.innerHTML += `<h2>SALA 9A</h2>`
+                }
+                res9A.innerHTML += `${sala9A[i]} <br>`
+            }
+            for (var i = 0; i < sala9B.length; i++) {
+                if (i == 0) {
+                    res9B.innerHTML += `<h2>SALA 9B</h2>`
+                }
+                res9B.innerHTML += `${sala9B[i]} <br>`
+            }
+            for (var i = 0; i < sala1A.length; i++) {
+                if (i == 0) {
+                    res1A.innerHTML += `<h2>SALA 1A</h2>`
+                }
+                res1A.innerHTML += `${sala1A[i]} <br>`
+            }
+            for (var i = 0; i < sala1B.length; i++) {
+                if (i == 0) {
+                    res1B.innerHTML += `<h2>SALA 1B</h2>`
+                }
+                res1B.innerHTML += `${sala1B[i]} <br>`
+            }
+            for (var i = 0; i < sala2A.length; i++) {
+                if (i == 0) {
+                    res2A.innerHTML += `<h2>SALA 2A</h2>`
+                }
+                res2A.innerHTML += `${sala2A[i]} <br>`
+            }
+            for (var i = 0; i < sala2B.length; i++) {
+                if (i == 0) {
+                    res2B.innerHTML += `<h2>SALA 2B</h2>`
+                }
+                res2B.innerHTML += `${sala2B[i]} <br>`
+            }
+
+            console.log(sala9A.length)
+            console.log(sala9B.length)
+            console.log(sala1A.length)
+            console.log(sala1B.length)
+            console.log(sala2A.length)
+            console.log(sala2B.length)
+        }
+        /*
+        1A: 5 7 5 7 6 4
+        1B: 6 6 6 3 6 4
+        2A: 7 5 4 4 3 5
+        2B: 7 3 5 3 4 5
+        3A: 5 5 4 5 5 4
+        3B: 5 4 5 4 5 8
+            
+        1A 35
+        1B 30
+        2A 29
+        2B 25
+        3A 29
+        3B 30 
+        1A: 6 6 5 5 6 6
+        1B: 5 6 4 4 6 5
+        2A: 5 5 5 4 4 5
+        2B: 6 4 5 4 4 4
+        3A: 6 4 5 3 4 6
+        3B: 7 5 5 5 5 4
+
+        9A: 5 5 6 4 4 4 4 4
+        9B: 5 6 6 5 4 4 4 5
+        1A: 5 5 4 4 4 4 4 4
+        1B: 5 5 4 5 3 3 3 4
+        2A: 4 4 3 4 3 3 3 4
+        2B: 4 4 4 3 3 3 3 3
+        3A: 4 5 3 3 3 3 3 3
+        3B: 4 5 4 4 4 3 3 5
+            9 9 1 1 2 2 3 3
+        */
+
+
+    </script>
+</body>
+
+</html>
